@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
-
 import css from './Statistics.module.css';
 
 export default function Statistics({ stats, title }) {
   return (
     <section className={css.statistics}>
-      <h2 className={css.title}>{title}</h2>
-
+      {title && <h2 className={css.title}>{title}</h2>}
       <ul className={css.statList}>
         {stats.map(({ id, label, percentage }) => {
           const randomBcgCol = { backgroundColor: getRandomHexColor() };
@@ -31,7 +29,7 @@ Statistics.propTypes = {
       percentage: PropTypes.number.isRequired,
     })
   ),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 function getRandomHexColor() {
